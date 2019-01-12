@@ -1,8 +1,7 @@
 import processing.serial.*;
 import processing.svg.*;
 
-PGraphics svg = createGraphics(1537, 1060, SVG, "output.svg");
-Serial myPort;    // Create object from Serial class
+//PGraphics svg = createGraphics(1537, 1060, SVG, "output2.svg");
 int val;          // Data received from the serial port
 int lf = 10;      // ASCII linefeed
 boolean record;
@@ -27,7 +26,7 @@ int col = 0;
 void setup(){
   background(233, 233, 220);
   size(1537, 1060);
-    
+
 }
 
 void draw(){
@@ -49,8 +48,8 @@ void draw(){
       }
     }
   } else {
-    svg.dispose();
-    svg.endDraw();
+    //svg.dispose();
+    //svg.endDraw();
   }
   
 }
@@ -174,7 +173,7 @@ class Symbol{
   
   void drawLine(float x1, float y1, float x2, float y2, boolean up){
     line(x1, y1, x2, y2);
-    svg.line(x1, y1, x2, y2);
+    //svg.line(x1, y1, x2, y2);
     float _x1 = map(x1, 0, width, xMin, xMax);
     float _y1 = map(y1, 0, height, yMin, yMax);
     
