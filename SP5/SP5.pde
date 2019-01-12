@@ -21,8 +21,8 @@ void draw() {
         // Polar to Cartesian conversion
       x = r * cos(theta);
       y = r * sin(theta);
-      //x+=random(10)*0.2;
-      //y+= random(10)*0.2;
+      //x+=random(50)*0.2;
+      //y+= random(50)*0.2;
     
       // Draw an ellipse at x,y
       noStroke();
