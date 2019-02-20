@@ -9,7 +9,7 @@ float x;
 float y;
 
 void setup() {
-  size(720, 500);
+  size(720, 1051);
   noLoop();
   background(255);
   beginRecord(SVG, "filename.svg");
