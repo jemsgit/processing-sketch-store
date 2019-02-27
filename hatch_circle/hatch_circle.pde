@@ -2,27 +2,88 @@ float startAngle;
 float density;
 float radius;
 void setup() {
-  size(800,800);
+  size(1200,1200);
   smooth();
   stroke(0);
   noFill();
-  startAngle  = PI/3;
-  radius = 380;
+  noLoop();
+  radius = 500.0;
   density = 0.1;
 }
 void draw() {
   background(255);
-  startAngle = atan2(height/2-mouseY,width/2-mouseX);
-  translate(width/2,height/2);
   noFill();
   stroke(0);
-  strokeWeight(0.5);
+  strokeWeight(1);
+  hatch_circle_cut2(radius, radius, radius, 45, 0.1, false);
+}
+
+void hatch_circle(float xc, float yc, float r, float angle, float density, boolean drawCirle) {
+  float startAngle = radians(angle);
   for(float i = -1; i <1;i+=density) {
-    float angle = acos(i);
-    line(cos(startAngle+angle)*radius,sin(startAngle+angle)*radius,cos(startAngle-angle)*radius,sin(startAngle-angle)*radius);
+    angle = acos(i);
+    line(cos(startAngle+angle)*r + xc,sin(startAngle+angle)*r + yc,cos(startAngle-angle)*r +xc,sin(startAngle-angle)*r + yc);
+  }
+  strokeWeight(1);
+  if(drawCirle) {
+    ellipse(xc,yc,r*2,r*2);
+  }
+}
+
+void hatch_circle_random(float xc, float yc, float r, float angle, float density, boolean drawCirle, float start, float end) {
+  float startAngle = radians(angle);
+  for(float i = -1; i <1;i+=density) {
+    angle = acos(i) + random(start, end);
+    line(cos(startAngle+angle)*r + xc,sin(startAngle+angle)*r + yc,cos(startAngle-angle)*r +xc,sin(startAngle-angle)*r + yc);
   }
   strokeWeight(1.5);
-  ellipse(0,0,radius*2,radius*2);
-  fill(220,220,0);
-  stroke(255);
+  if(drawCirle) {
+    ellipse(xc,yc,r*2,r*2);
+  }
+}
+
+void hatch_circle_cut(float xc, float yc, float r, float angle, float density, boolean drawCirle) {
+  float startAngle = radians(angle);
+  float prevAngle = -1;
+  boolean opposit = false;
+  for(float i = -1; i <1;i+=density) {
+    angle = acos(i);
+    line(cos(startAngle+angle)*r + xc,sin(startAngle+angle)*r + yc,cos(startAngle-angle)*r +xc,sin(startAngle-angle)*r + yc);
+    if(prevAngle != -1) {
+      if(opposit) {
+        arc(xc, yc, r*2, r*2, startAngle+angle + PI, startAngle+prevAngle + PI);
+      } else {
+        arc(xc, yc, r*2, r*2, startAngle+angle, startAngle+prevAngle);
+      }
+    }
+    prevAngle = angle;
+    opposit = !opposit;
+}
+  strokeWeight(1.5);
+  if(drawCirle) {
+    ellipse(xc,yc,r*2,r*2);
+  }
+}
+
+void hatch_circle_cut2(float xc, float yc, float r, float angle, float density, boolean drawCirle) {
+  float startAngle = radians(angle);
+  float prevAngle = -1;
+  boolean opposit = false;
+  for(float i = -1; i <1;i+=density) {
+    angle = acos(i);
+    line(cos(startAngle+angle)*r + xc,sin(startAngle+angle)*r + yc,cos(startAngle-angle)*r +xc,sin(startAngle-angle)*r + yc);
+    if(prevAngle != -1) {
+      if(opposit) {
+        arc(xc, yc, r*2, r*2, startAngle-prevAngle, startAngle-angle);
+      } else {
+        arc(xc, yc, r*2, r*2, startAngle+angle, startAngle+prevAngle);
+      }
+    }
+    prevAngle = angle;
+    opposit = !opposit;
+  }
+  strokeWeight(1.5);
+  if(drawCirle) {
+    ellipse(xc,yc,r*2,r*2);
+  }
 }
