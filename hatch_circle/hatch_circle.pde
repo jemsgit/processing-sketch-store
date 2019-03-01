@@ -15,7 +15,7 @@ void draw() {
   noFill();
   stroke(0);
   strokeWeight(1);
-  hatch_circle_cut2(radius, radius, radius, 45, 0.1, false);
+  hatch_circle_cut(radius, radius, radius, 45, 0.1, false);
 }
 
 void hatch_circle(float xc, float yc, float r, float angle, float density, boolean drawCirle) {
@@ -65,7 +65,7 @@ void hatch_circle_cut(float xc, float yc, float r, float angle, float density, b
   }
 }
 
-void hatch_circle_cut2(float xc, float yc, float r, float angle, float density, boolean drawCirle) {
+void hatch_circle_cut2(float xc, float yc, float r, float angle, float density, boolean drawCirle) { // opposit order
   float startAngle = radians(angle);
   float prevAngle = -1;
   boolean opposit = false;
