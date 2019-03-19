@@ -22,15 +22,26 @@ void draw() {
         // Polar to Cartesian conversion
       x = r * cos(theta);
       y = r * sin(theta);
-      if(color_selector > 2) {
+      if(color_selector > 1) {
         color_selector = 0;
       }
       stroke(colors[color_selector]);
       color_selector++;
+      if(theta > 3.90 && theta < 4.10 
+        || theta > 0.80 && theta < 1.00){
+        stroke(colors[2]);
+        ellipse(x+width/2, y+height/2, el_r, el_r);
+        ellipse(x+width/2, y+height/2, el_r-(el_r/4), el_r-(el_r/4));
+        ellipse(x+width/2, y+height/2, el_r-(el_r/2), el_r-(el_r/2));
+        ellipse(x+width/2, y+height/2, el_r-(el_r/1.5), el_r-(el_r/1.5));
+      } else {
+        ellipse(x+width/2, y+height/2, el_r, el_r);
+        ellipse(x+width/2, y+height/2, el_r-(el_r/3), el_r-(el_r/3));
+      }
+
       // Draw an ellipse at x,y
       // Adjust for center of window
-      ellipse(x+width/2, y+height/2, el_r, el_r);
-      ellipse(x+width/2, y+height/2, el_r-(el_r/3), el_r-(el_r/3));
+
       // Increment the angle
       theta += 0.2;
       // Increment the radius
