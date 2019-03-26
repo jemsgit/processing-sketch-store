@@ -1,7 +1,7 @@
 float time = 0;
 float y_step = 2;
 float x = 0;
-float y = 50;
+float y = 20;
   
 void setup() {
   size(1000, 800);
@@ -15,10 +15,13 @@ void draw() {
   while(y < 400){
     x = 0;
     float offset = x;
-    float t_off = time;
     beginShape();
     while (x < width) {
-      curveVertex(x, y + 100 * x/150 * noise((x+50)/100, time) );
+      offset = x;
+      if(offset < 200) {
+        offset = 400 - offset;
+      }
+      curveVertex(x, y + 100 * offset/100 * noise(x/200, time)-50 );
       x = x + 1;
       println(x);
     }
