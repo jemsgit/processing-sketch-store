@@ -15,7 +15,7 @@ void draw() {
   noFill();
   stroke(0);
   strokeWeight(1);
-  hatch_circle_cut(radius, radius, radius, 45, 0.1, false);
+  hatch_circle_cut2(radius, radius, radius, 45, 0.1, false);
 }
 
 void hatch_circle(float xc, float yc, float r, float angle, float density, boolean drawCirle) {
