@@ -22,24 +22,19 @@ void draw() {
   pg1.background(255);
   pg1.strokeWeight(1);
   pg1.stroke(0);
-  int cell_width = 50;
-  int cell_height = 50;
+  int cell_width = 60;
+  int cell_height = 60;
   int count = 0;
   int y_count = 0;
   float delta = 0;
-  for(int i = 5; i < 1300 - cell_height; i+= cell_height){
-    
-    for(int j = 5; j < 1300 - cell_width; j+= cell_width){
-      if(count > 0 && y_count > 0) {
-        if((y_count/(count+0.1) > 0.2) && (y_count/(count+0.1) < 0.8)) {
-            delta = (y_count/(count+0.1)) * 5;
-             println(delta);
-        }
-      }
+  for(int i = 5; i < 1100 - (cell_height * 2); i+= cell_height){
+    for(int j = 5; j < 1300 - (cell_width * 2); j+= cell_width){
+      //float delta_y = pow(count, y_count/2)/10;
+      float delta_y = count * y_count * 3;
       if(count % 2 != 0) {
-        drawHexagon(j + (y_count * delta), i + 25 + (count * delta), 30);
+        drawHexagon(j , i + 25 + delta_y, 30);
       } else {
-         drawHexagon(j + (y_count * delta), i+ (count * delta), 30);
+         drawHexagon(j, i + delta_y, 30);
       }
       count+=1;
     }
