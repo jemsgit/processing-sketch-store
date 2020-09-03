@@ -7,7 +7,7 @@ int[] angels = {-45, 0, 30, 45, 60, 90};
 PGraphics pg1;
 PGraphics pg2;
 
-boolean draw = false;
+boolean draw = true;
 
 void setup() {
   size(1300,1300);
