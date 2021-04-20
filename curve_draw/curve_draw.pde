@@ -15,7 +15,7 @@ int thinMax = 25; //25
 float randBrightness;
 float prevBrightness;
 float brightnessThreshold = 40; //40
-float distanceThreshold = 30; //30
+float distanceThreshold = 40; //30
 
 void setup(){
   image2 = loadImage("adrea.jpg");
@@ -42,6 +42,7 @@ boolean isDone(int x, int y){
 }
 
 void draw(){
+  //draw3();
   for(int o = 0; o < 5; o++){
     distanceThreshold += 5;
     draw3();
