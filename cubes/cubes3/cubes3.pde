@@ -1,4 +1,7 @@
+import processing.svg.*;
 float angle2D = radians(30);
+
+boolean rec = false;
 
 void setup() {
   background(255);
@@ -9,17 +12,21 @@ void setup() {
 
 void draw() { 
   int k;
+  beginRecord(SVG, "resut1.svg");
   strokeWeight(2);
   stroke(255, 0, 0);
   for(k = 0; k < 37; k++) {
     noFill();
     drawRect(200, 250, 200, 200, k*5, 25);
   }
+  endRecord();
+  beginRecord(SVG, "resut2.svg");
   stroke(0, 0, 255);
   for(k = 0; k < 37; k++) {
     noFill();
     drawRect(500, 270, 200, 200, k*5, -30);
   }
+  endRecord();
   //stroke(0);
   //for(k = 0; k < 37; k++) {
   //  noFill();
